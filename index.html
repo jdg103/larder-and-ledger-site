@@ -83,11 +83,64 @@ footer .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
 footer img{height:56px}
 footer ol{padding-left:18px;margin:0;max-width:640px}
 
+
+/* hero visual */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:56px;align-items:center;margin-top:64px}
+.hero-grid h1{margin-top:0;text-wrap:balance}
+.hero .tag,.hero p.lede{text-wrap:pretty}
+.hero-visual{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hero-visual figcaption{font-size:13px;color:#A9C4B5}
+.phone{width:290px;background:#0F1713;border-radius:44px;padding:10px;box-shadow:0 30px 60px rgba(0,0,0,.35);transform:rotate(2deg)}
+.screen{background:var(--larder);border-radius:36px;padding:22px 16px 18px;display:flex;flex-direction:column;gap:10px;color:var(--iron);font-size:13px;line-height:1.35}
+.app-top{display:flex;align-items:center;gap:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;color:var(--basil);margin:0 4px 4px}
+.app-top img{width:28px;height:28px}
+.tile{background:#fff;border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.tile small{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--tomato)}
+.tile.dark{background:var(--basil);color:#fff}
+.tile.dark small{color:var(--lemon)}
+.tile.dark b{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;line-height:1.2}
+.tile.dark span{color:#CFE3D6;font-size:12px}
+.item{display:flex;align-items:center;gap:8px}
+.item em{margin-left:auto;font-style:normal;color:var(--muted);font-size:12px}
+.dot{width:8px;height:8px;border-radius:50%}
+.dot.hot{background:var(--tomato)}.dot.warm{background:var(--lemon)}.dot.ok{background:var(--vine)}
+.row{display:flex;justify-content:space-between;padding:4px 0;color:var(--muted)}
+.row.best{color:var(--iron);font-weight:600}
+.save{background:var(--lemon);color:var(--iron);font-weight:700;border-radius:10px;padding:7px 10px;text-align:center}
+
+/* sticky mobile CTA */
+.sticky-cta{display:none}
+@media (max-width:820px){
+  body{font-size:16px}
+  section{padding-top:52px}
+  h2{margin-bottom:18px}
+  .hero{padding:20px 0 56px}
+  .hero nav img{height:34px}
+  .hero nav .btn{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:36px;margin-top:36px}
+  .hero h1{font-size:40px}
+  .hero .tag{font-size:20px;margin:16px 0 20px}
+  .hero p.lede{font-size:16px;margin-bottom:24px}
+  .phone{width:260px;transform:none}
+  .card{padding:20px;border-radius:16px}
+  .card h3{font-size:19px}
+  .grid3{gap:12px}
+  .stats{gap:18px;margin-top:28px}
+  .stat{display:grid;grid-template-columns:130px 1fr;align-items:center;gap:14px;border-top-width:4px;padding-top:12px}
+  .stat .big{font-size:36px}
+  .stat p{margin:0;font-size:15px}
+  .ic{width:44px;height:44px;margin-bottom:12px}
+  .steps{gap:14px;margin-top:20px}
+  .signup{margin-top:52px;border-radius:20px}
+  .sticky-cta{display:block;position:fixed;left:16px;right:16px;bottom:16px;z-index:10;text-align:center;box-shadow:0 10px 30px rgba(22,32,27,.3);transition:opacity .2s,transform .2s}
+  .sticky-cta.hide{opacity:0;transform:translateY(20px);pointer-events:none}
+  footer{padding-bottom:96px}
+}
+
 @media (max-width:820px){
   .grid3,.steps{grid-template-columns:1fr}
   .signup{grid-template-columns:1fr;padding:32px 24px;gap:32px}
   .row2{grid-template-columns:1fr}
-  .hero h1{margin-top:48px}
 }
 </style>
 </head>
@@ -99,10 +152,31 @@ footer ol{padding-left:18px;margin:0;max-width:640px}
 <img src="assets/ll-lockup-horizontal-reversed.svg" alt="Larder &amp; Ledger">
 <a class="btn small" href="#join">Join the trial</a>
 </nav>
+<div class="hero-grid">
+<div class="hero-copy">
 <h1>Same meals. Same shop. Same bag in the bin.</h1>
 <p class="tag">Use what you’ve got. Pay less for what you need.</p>
 <p class="lede">Larder &amp; Ledger is a new app for busy UK households. It keeps track of what’s in your kitchen, suggests new meals that use it up, and checks whether your online shop would be cheaper at another supermarket that delivers.</p>
-<a class="btn" href="#join">Be one of our first 20 households</a>
+<a class="btn" href="#join" id="hero-cta">Be one of our first 20 households</a>
+</div>
+<figure class="hero-visual">
+<div class="phone" aria-hidden="true"><div class="screen">
+<div class="app-top"><img src="assets/ll-mark.svg" alt=""><span>Larder</span></div>
+<div class="tile"><small>Use first</small>
+<div class="item"><span class="dot hot"></span>Spinach<em>2 days</em></div>
+<div class="item"><span class="dot warm"></span>Chicken thighs<em>3 days</em></div>
+<div class="item"><span class="dot ok"></span>Half a lemon<em>5 days</em></div>
+</div>
+<div class="tile dark"><small>Tonight</small><b>Lemony chicken &amp; spinach traybake</b><span>Uses 5 things you have · 35 min</span></div>
+<div class="tile"><small>This week · 18 items</small>
+<div class="row"><span>Tesco · Clubcard</span><span>£58.40</span></div>
+<div class="row best"><span>Sainsbury’s · Nectar</span><span>£52.10</span></div>
+<div class="save">Save £6.30 this week</div>
+</div>
+</div></div>
+<figcaption>Illustration of the app</figcaption>
+</figure>
+</div>
 </div>
 </header>
 
@@ -221,6 +295,7 @@ footer ol{padding-left:18px;margin:0;max-width:640px}
 </div></div>
 </section>
 </main>
+<a class="btn sticky-cta hide" href="#join" id="sticky-cta">Join the trial</a>
 
 <footer>
 <div class="container cols">
@@ -273,6 +348,19 @@ footer ol{padding-left:18px;margin:0;max-width:640px}
         say('Sorry, that didn’t go through. Please try again, or email info@larderandledger.co.uk.', 'err');
       });
   });
+})();
+
+(function () {
+  var cta = document.getElementById('sticky-cta');
+  if (!cta || !('IntersectionObserver' in window)) return;
+  var watch = [document.getElementById('hero-cta'), document.getElementById('join')];
+  var visible = {};
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+    var hide = Object.keys(visible).some(function (k) { return visible[k]; });
+    cta.classList.toggle('hide', hide);
+  }, { threshold: 0.1 });
+  watch.forEach(function (el) { if (el) io.observe(el); });
 })();
 </script>
 </body>
